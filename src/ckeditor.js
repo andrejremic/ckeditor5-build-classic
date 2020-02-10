@@ -29,11 +29,18 @@ import Paragraph from '@ckeditor/ckeditor5-paragraph/src/paragraph';
 // import Table from '@ckeditor/ckeditor5-table/src/table';
 // import TableToolbar from '@ckeditor/ckeditor5-table/src/tabletoolbar';
 
+import GFMDataProcessor from '@ckeditor/ckeditor5-markdown-gfm/src/gfmdataprocessor';
+
 export default class ClassicEditor extends ClassicEditorBase {}
 
+// Simple plugin which loads the data processor.
+function Markdown( editor ) {
+	editor.data.processor = new GFMDataProcessor();
+}
 
 // Plugins to include in the build.
 ClassicEditor.builtinPlugins = [
+	Markdown,
 	Essentials,
 	// UploadAdapter,
 	Autoformat,
